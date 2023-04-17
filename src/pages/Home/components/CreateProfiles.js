@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'components/Container'
-import tv from "assets/tv.png"
+import kids from "assets/kids.png"
 import Text from 'components/Text'
 
 const CreateProfiles = () => {
@@ -10,12 +10,10 @@ const CreateProfiles = () => {
       distribution="space-between"
       alignment="center"
     >
-      <Container>
-        <img src={tv} alt="" />
-      </Container>
       <Container
         vertical
-        alignment="flex-start"
+        distribution="center"
+        gap="0.25rem"
       >
         <Text 
           className="title"
@@ -30,6 +28,11 @@ const CreateProfiles = () => {
         >
         Send kids on adventures with their favorite characters in a space made just for them—free with your membership.
         </Text>
+      </Container>
+      <Container
+        className="img-wrapper"
+      >
+        <img src={kids} alt="Create profiles for kids" />
       </Container>
     </Container>
   )

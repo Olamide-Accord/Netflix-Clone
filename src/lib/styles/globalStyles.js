@@ -31,6 +31,15 @@ const globalStyles = createGlobalStyle`
     font-weight: 800;
     text-align: start;
   }
+  .img-wrapper{
+    min-height: 50vh;
+    min-width: 50%;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
   @media only screen and (max-width: 991px) {
     html{
       font-size: 70%;
@@ -41,6 +50,10 @@ const globalStyles = createGlobalStyle`
     .title{
       font-size: 2.75rem;
       text-align: center;
+    }
+    .img-wrapper{
+      width: 100%;
+      min-height: 20vh;
     }
   }
   @media only screen and (max-width: 580px) {

@@ -1,5 +1,4 @@
-import styled, {css} from 'styled-components'
-import {colors} from "../lib/styles/colors"
+import styled, {css} from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,16 +40,16 @@ const Wrapper = styled.div`
     margin: ${(props) => props.tabMargin};
     padding: ${(props) => props.tabPadding};
     ${(props) => props.tabAlignment && css`
-    align-items: ${props.tabAlignment};
+      align-items: ${props.tabAlignment};
     `}
     ${(props) => props.tabDistribution && css`
       justify-content: ${props.tabDistribution};
     `}
-    ${(props) => props.tabVertical && css`
-      flex-direction: column;
-    `}
     ${(props) => props.tabHorizontal && css`
       flex-direction: row;
+    `}
+    ${(props) => props.tabVertical && css`
+      flex-direction: column;
     `}
     ${(props) => props.tabGap && css`
       gap: ${props.tabGap};
@@ -151,6 +150,7 @@ const Container = ({
       tabWidth={tabWidth}
       tabHeight
       tabVertical
+      tabHorizontal
       tabDistribution
       tabAlignment
       tabGap

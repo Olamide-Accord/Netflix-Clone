@@ -14,19 +14,17 @@ const SingleFAQ = ({title, text1, text2}) => {
       margin="0.2rem 0"
     >
       <Container
-        horizontal
-        tabWidth="100%"
+        width="100%"
+        tabHorizontal
         distribution="space-between"
         alignment="center"
-        padding="1rem 1.75rem"
-        margin="0.15rem 0"
+        padding="1.2rem 1.75rem"
+        margin="0.2rem 0"
         className="sub-bar"
-        tabHorizontal
-        mobileHorizontal
       >
         <Text
-          size="1.85rem"
-          weight="300"
+          size="1.65rem"
+          weight="400"
         >
           {title}
         </Text>
@@ -39,13 +37,16 @@ const SingleFAQ = ({title, text1, text2}) => {
           vertical
           padding="0.75rem 1.75rem"
           alignment="center"
-          className="sub-bar"
+          className="sub-text"
+          tabVertical
+          tabDistribution="flex-start"
         >
           <Text
             alignment="left"
             size="1.5rem"
-            weight="300"
+            weight="200"
             lineHeight="145%"
+            tabAlign="left"
           >
             {text1}
           </Text>
@@ -54,6 +55,7 @@ const SingleFAQ = ({title, text1, text2}) => {
             size="1.5rem"
             weight="300"
             lineHeight="150%"
+            tabAlign="left"
           >
             {text2}
           </Text>

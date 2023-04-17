@@ -18,11 +18,11 @@ const index = () => {
       <Line />
       <EnjoyTv />
       <Line />
-      <Download />
-      <Line />
       <Watch />
       <Line />
       <CreateProfiles />
+      <Line />
+      <Download />
       <Line />
       <FAQs />
       <Line />

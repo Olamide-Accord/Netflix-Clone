@@ -43,7 +43,7 @@ const Hero = () => {
     try{
       setLoading(true);
       const {user} = await signupAuth(email, password)
-      console.log("USER CREATED:", user);
+      localStorage.setItem('user', user);
       resetForm();
       setLoading(false);
       navigate('/login')
@@ -114,7 +114,7 @@ const Hero = () => {
           padding="1rem"
           type="submit"
         >
-          x{
+          {
             loading ? "Loading..." : "Sign up"
           }
         </Button>

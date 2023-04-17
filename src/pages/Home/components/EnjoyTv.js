@@ -2,14 +2,12 @@ import Container from 'components/Container'
 import Text from 'components/Text'
 import tv from "assets/tv.png"
 
-
 const EnjoyTv = () => {
   return (
     <Container
       as="section"
       slignment="center"
       distribution="space-between"
-      gap="1rem"
     >
       <Container
         vertical
@@ -31,7 +29,9 @@ const EnjoyTv = () => {
           Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.
         </Text>
       </Container>
-      <Container>
+      <Container
+        className="img-wrapper"
+      >
         <img src={tv} alt="tv" />
       </Container>
     </Container>

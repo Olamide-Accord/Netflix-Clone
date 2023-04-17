@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from 'components/Container'
 import Text from 'components/Text'
-import mobile from "assets/mobile.jpg"
+import mobile from "assets/download.png"
 
 const Download = () => {
   return (
@@ -13,7 +13,9 @@ const Download = () => {
       tabVertical
       tabAlignment="center"
     >
-      <Container>
+      <Container
+        className="img-wrapper"
+      >
         <img src={mobile} alt="mobile download" />
       </Container>
       <Container

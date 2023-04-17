@@ -1,5 +1,4 @@
 import Button from "components/Button";
-import Container from "components/Container";
 import Text from "components/Text";
 import styled from "styled-components";
 import {Link} from "react-router-dom"
