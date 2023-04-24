@@ -1,6 +1,35 @@
 import styled, {css} from 'styled-components';
 
-const Wrapper = styled.div`
+/**
+ * @param {String} as -
+ * @param {String} bg
+ * @param {String} width
+ * @param {String} height
+ * @param {String} padding
+ * @param {String} margin
+ * @param {String} border
+ * @param {String} distribution
+ * @param {String} alignment
+ * @param {String} horizontal
+ * @param {String} wrap
+ * @param {String} tabWidth
+ * @param {String} tabHeight
+ * @param {String} tabDistribution
+ * @param {String} tabAlignment
+ * @param {String} tabVertical
+ * @param {String} tabHorizontal
+ * @param {String} tabMargin
+ * @param {String} tabPadding
+ * @param {String} mobileWidth
+ * @param {String} mobileHeight
+ * @param {String} mobileDistribution
+ * @param {String} mobileAlignment
+ * @param {String} mobileVertical
+ * @param {String} mobileHorizontal
+ */
+
+
+const Container = styled.div`
   display: flex;
   position: relative;
   &::-webkit-scrollbar {
@@ -76,99 +105,6 @@ const Wrapper = styled.div`
   }
 `
 
-/**
- * @param {String} as -
- * @param {String} bg
- * @param {String} width
- * @param {String} height
- * @param {String} padding
- * @param {String} margin
- * @param {String} border
- * @param {String} distribution
- * @param {String} alignment
- * @param {String} horizontal
- * @param {String} wrap
- * @param {String} tabWidth
- * @param {String} tabHeight
- * @param {String} tabDistribution
- * @param {String} tabAlignment
- * @param {String} tabVertical
- * @param {String} tabHorizontal
- * @param {String} tabMargin
- * @param {String} tabPadding
- * @param {String} mobileWidth
- * @param {String} mobileHeight
- * @param {String} mobileDistribution
- * @param {String} mobileAlignment
- * @param {String} mobileVertical
- * @param {String} mobileHorizontal
- */
 
-const Container = ({
-  as = 'div',
-  bg,
-  width,
-  height,
-  padding,
-  margin,
-  border,
-  distribution,
-  alignment,
-  vertical,
-  horizontal,
-  wrap,
-  tabWidth,
-  tabHeight,
-  tabHorizontal,
-  tabVertical,
-  tabDistribution,
-  tabAlignment,
-  tabGap,
-  tabMargin,
-  tabPadding,
-  mobileAlignment,
-  mobileDistribution,
-  mobileGap,
-  mobileHeight,
-  mobileHorizontal,
-  mobileVertical,
-  mobileWidth,
-  children,
-  ...rest
-}) => {
-  return (
-    <Wrapper
-      as={as}
-      width={width}
-      height={height}
-      alignment={alignment}
-      distribution={distribution}
-      margin={margin}
-      padding={padding}
-      vertical={vertical}
-      wrap={wrap}
-      tabWidth={tabWidth}
-      tabHeight
-      tabVertical
-      tabHorizontal
-      tabDistribution
-      tabAlignment
-      tabGap
-      tabMargin
-      tabPadding
-      mobileAlignment
-      mobileDistribution
-      mobileGap
-      mobileHeight
-      mobileHorizontal={mobileHorizontal}
-      mobileVertical={mobileVertical}
-      mobileWidth
-      bg
-      {...rest}
-    >
-      {children}
-    </Wrapper>
-  )
-}
 
 export default Container

@@ -8,7 +8,7 @@ const globalStyles = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Martel Sans', sans-serif;
   }
   ::selection{
     background-color: ${(props) => props.theme.colors.primary};

@@ -12,41 +12,36 @@ const topRatedTVShowsURL = `tv/top_rated?api_key=${API_KEY}&language=en-US&page=
 const trendingNowTvURL = `trending/tv/week?api_key=${API_KEY}`;
 
 
-export const fetchPopularMovies = async() => {
-  const url = `${BASE_URL}${popularMoviesURL}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  const {results} = data;
-  return results;
-};
-export const fetchTrendingNow = () => `${BASE_URL}${trendingNowURL}`;
-export const fetchTopRatedMovies = () => `${BASE_URL}${topRatedURL}`;
-export const fetchUpcomingMovies = () => `${BASE_URL}${upcomingURL}`;
-export const fetchPopularTVShows = () => `${BASE_URL}${popularTVshowsURL}`;
-export const fetchTopRatedTVShows = () => `${BASE_URL}${topRatedTVShowsURL}`;
-export const fetchTrendingTVShows = () => `${BASE_URL}${trendingNowTvURL}`;
+export const fetchPopularMoviesUrl = () => `${BASE_URL}${popularMoviesURL}`;
+  
+export const fetchTrendingNowUrl = () => `${BASE_URL}${trendingNowURL}`;
+export const fetchTopRatedMoviesUrl = () => `${BASE_URL}${topRatedURL}`;
+export const fetchUpcomingMoviesUrl = () => `${BASE_URL}${upcomingURL}`;
+export const fetchPopularTVShowsUrl = () => `${BASE_URL}${popularTVshowsURL}`;
+export const fetchTopRatedTVShowsUrl = () => `${BASE_URL}${topRatedTVShowsURL}`;
+export const fetchTrendingTVShowsUrl = () => `${BASE_URL}${trendingNowTvURL}`;
 
 
-export const fetchMovieDetails = (movieId) =>
+export const fetchMovieDetailsUrl = (movieId) =>
   `${BASE_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
-export const fetchTvDetails = (tvId) =>
+export const fetchTvDetailsUrl = (tvId) =>
   `${BASE_URL}tv/${tvId}?api_key=${API_KEY}&language=en-US`;
 
-export const fetchSimilarMovies = (movieId) =>
+export const fetchSimilarMoviesUrl = (movieId) =>
   `${BASE_URL}movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 
-export const fetchSimilarTV = (TvId) =>
+export const fetchSimilarTVUrl = (TvId) =>
   `${BASE_URL}tv/${TvId}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 
-export const fetchMovieTrailers = (movieId) =>
+export const fetchMovieTrailersUrl = (movieId) =>
   `${BASE_URL}movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`;
 
-export const fetchTVTrailers = (tvId) =>
+export const fetchTVTrailersUrl = (tvId) =>
   `${BASE_URL}tv/${tvId}/videos?api_key=${API_KEY}&language=en-US`;
 
-export const fetchMovieCasts = (movieId) =>
+export const fetchMovieCastsUrl = (movieId) =>
   `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`;
 
-export const fetchTVCasts = (tvId) =>
+export const fetchTVCastsUrl = (tvId) =>
   `${BASE_URL}/tv/${tvId}/credits?api_key=${API_KEY}`;

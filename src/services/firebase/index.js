@@ -24,6 +24,7 @@ export const loginAuth = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
+
 export const authState = (callback) => onAuthStateChanged(auth, callback);
 
 export default app;

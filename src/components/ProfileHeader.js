@@ -9,6 +9,7 @@ import Overlay from './Overlay';
 import { auth } from 'services/firebase';
 import { signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { motion } from "framer-motion"
 
 const ProfileWrapper = styled.header`
   width: 100%;
@@ -28,6 +29,7 @@ const ProfileWrapper = styled.header`
     top: 0;
     left: 0;
     right: 0;
+    
     img{
       width: 150px;
     }
@@ -45,6 +47,14 @@ const ProfileWrapper = styled.header`
     transform: translateY(-50%);
     z-index: 5;
     text-align: left;
+    h3{
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    p{
+      font-size: 1.2rem;
+      font-weight: 200;
+    }
   }
 `;
 
@@ -62,31 +72,43 @@ const ProfileHeader = () => {
   return (
     <ProfileWrapper>
       <nav>
-        <Link to='/'>
-          <img src={logo} alt="Netflix Logo" />
-        </Link>
+        <div>
+          <Link to='/'>
+            <img src={logo} alt="Netflix Logo" />
+          </Link>
+        </div>
+        <Button
+          bg="transparent"
+        >
+          <Link to="my-list">My List</Link>
+        </Button>
         <Button onClick={() => logoutAuth()}>
           Sign out
         </Button>
       </nav>
       <Overlay />
-      <div className="content">
-        <Text
-          as="h2"
-          size="3rem"
-          alignment="left"
-          weight="700"
+      <motion.div
+        initial={{y: "100%"}}
+        animate={{y: "1%"}}
+        transition={{
+          duration: 1.5,
+          delayChildren: '0.2'
+        }}
+        className="content"
+      >
+        <motion.h3
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
         >
           THE SUPER MARIO BROS. MOVIE
-        </Text>
-        <Text
-          weight="300"
-          lineHeight="150%"
-          alignment="left"
+        </motion.h3>
+        <motion.p
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
         >
           While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.
-        </Text>
-      </div>
+        </motion.p>
+      </motion.div>
     </ProfileWrapper>
   )
 }

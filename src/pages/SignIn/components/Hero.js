@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { loginAuth } from 'services/firebase';
+import { auth, loginAuth } from 'services/firebase';
 import styled from "styled-components"
 import Button from 'components/Button'
 import Container from 'components/Container'
 import Input from 'components/Input'
 import Text from 'components/Text'
 import { toast } from 'react-toastify';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 const defaultFormFields = {
   email: "",
@@ -23,12 +24,14 @@ export const HeroWrapper = styled.div`
   width: 34rem;
   background-color: rgba(0,0,0,0.75);
   padding: 3.5rem 4rem 4.5rem;
-  #remember{
+  input[type="checkbox"] {
+    margin: 0;
     width: 1.75rem;
     height: 1.75rem;
-    background-color: #3b3b3b;
-    color: ${(props) => props.theme.colors.primary};
+    accent-color: ${(props) => props.theme.colors.primary} !important;
     border: none;
+    border-radius: none;
+    font-size: 1.5rem;
   }
   a{
     color: ${(props) => props.theme.colors.primary};
@@ -51,12 +54,25 @@ const Hero = () => {
     setFormFields(defaultFormFields)
   }
 
+  const resetPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success("Password reset link sent!");
+      }).catch(err => {
+        if(err.code === "auth/missing-email"){
+          toast.error("Enter your email");
+        }else{
+          toast.error(err.code);
+        }
+      }) 
+  }
+
   const loginSubmit = async(e) => {
     e.preventDefault();
     try{
       setIsLoading(true)
       const {user} = await loginAuth(email, password);
-      localStorage.getItem('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
       resetFormFields();
       setIsLoading(false);
       navigate('/browse');
@@ -76,6 +92,12 @@ const Hero = () => {
       }
     }
   }
+  React.useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if(loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+    }
+  }, [])
 
   return (
     <HeroWrapper>
@@ -131,22 +153,24 @@ const Hero = () => {
           </Container>
           <Container
             alignment="center"
+            tabHorizontal
             gap="0.25rem"
           >
             <Text
-              size="1rem"
+              size="1.2rem"
               weight="300"
             >
               Forgot password?
             </Text>
-            <a href="#">Click here</a>
+            <a href="#" onClick={resetPassword}>Click here</a>
           </Container>
           <Container
             alignment="center"
+            tabHorizontal
             gap="0.25rem"
           >
             <Text
-              size="1rem"
+              size="1.2rem"
               weight="300"
             >
             Don't have an account?
