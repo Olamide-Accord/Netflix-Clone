@@ -1,12 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import movieReducer from "./features/movies/movieSlice"
-import detailReducer from "./features/details/detailSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import rootReducer from "./rootReducer";
+import logger from "redux-logger";
+
 
 const store = configureStore({
-  reducer: {
-    movies: movieReducer,
-    details: detailReducer
-  }
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 });
 
 export default store;

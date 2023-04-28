@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux';
+import { fetchMovieDetails } from 'store/features/details/detailSlice';
 
 const CardImage = styled(motion.div)`
   overflow: hidden;
@@ -17,12 +19,17 @@ const CardImage = styled(motion.div)`
   }
 `;
 
+
+
 const ImageCard = ({movie}) => {
+  const dispatch = useDispatch()
   const {id, title, poster_path} = movie;
+
   return (
     <CardImage
       whileHover={{scale: 1.2}}
       layout
+      
     >
       <Link to={`/browse/${id}`}>
         <motion.img 

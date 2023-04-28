@@ -12,9 +12,11 @@ const Wrapper = styled.div`
   z-index: 1;
 `
 
-const Overlay = () => {
+const Overlay = ({children}) => {
   return (
-    <Wrapper></Wrapper>
+    <Wrapper>
+      {children}
+    </Wrapper>
   )
 }
 

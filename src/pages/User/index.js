@@ -12,6 +12,10 @@ import {
   fetchTopRatedTVShows 
 } from 'store/features/movies/movieSlice'
 
+import {
+  fetchMovieDetails
+} from "store/features/details/detailSlice"
+
 import ProfileHeader from 'components/ProfileHeader'
 import Card from 'components/Card'
 
@@ -41,7 +45,7 @@ const UserProfile = () => {
   return (
     <div style={{color: "#fff"}}>
       <ProfileHeader />
-      <Card cardTitle="Popular on Netflix" cardData={movies} />
+      <Card cardTitle="Popular on Netflix" cardData={movies} onClick={fetchMovieDetails} />
       <Card cardTitle="Trending Movies" cardData={trending} />
       <Card cardTitle="Top Rated Movies" cardData={ratedMovies} />
       <Card cardTitle="Movies Coming Soon" cardData={upcomingMovies} />

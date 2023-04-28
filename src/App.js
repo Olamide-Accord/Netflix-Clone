@@ -10,6 +10,7 @@ import SignIn from "pages/SignIn"
 import SignUp from "pages/SignUp"
 import User from "pages/User"
 import MyList from "pages/MyList"
+import MovieDetails from 'pages/Details.js';
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='login' element={<SignIn />} />
             <Route path='sign-up' element={<SignUp />} />
-            <Route path="browse" element={<User />} />
+            <Route path="browse" element={<User />}>
+            </Route>
+              <Route path="browse/:id" element={<MovieDetails />} />
+            
             <Route path="browse/my-list" element={<MyList />} />
           </Routes>
         </BrowserRouter>

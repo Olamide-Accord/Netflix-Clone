@@ -10,9 +10,6 @@ import {
   fetchTVCastsUrl
 } from "api";
 
-const movieDetailsUrl = fetchMovieDetailsUrl();
-const tvDetailsUrl = fetchTvDetailsUrl();
-const similarMoviesUrl = fetchSimilarMoviesUrl();
 
 const initialState = {
   movieDetails: [],
@@ -25,9 +22,9 @@ const initialState = {
   tvCasts: [],
 }
 
-export const fetchMovieDetails = createAsyncThunk('details/fetchMovieDetails', () => {
-  return fetch(movieDetailsUrl)
-    .then(res => res.json)
+export const fetchMovieDetails = createAsyncThunk('details/fetchMovieDetails', (movieId) => {
+  return fetch(fetchMovieDetailsUrl(movieId))
+    .then((res) => res.json())
     .catch(err => console.log(err))
 })
 
@@ -37,8 +34,8 @@ const detailSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovieDetails.fulfilled, (state, {payload}) => {
-        console.log(payload);
-        state.movieDetails = payload
+        console.log(payload)
+        state.movieDetails = payload;
       })
   }
 });

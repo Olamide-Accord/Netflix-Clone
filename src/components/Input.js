@@ -16,7 +16,7 @@ const InputLabel = styled.label`
   transition: 300ms ease all;
   pointer-events: none;
   color: #8c8c8c;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   ${({shrink}) => shrink && shrinkLabelStyle};
 `
 
@@ -27,7 +27,7 @@ const InputWrapper = styled.input`
   width: 100%;
   border: none;
   background-color: #3b3b3b;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-top: 0.25rem;
   color: ${(props) => props.theme.colors.white};
   &:focus {

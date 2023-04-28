@@ -13,7 +13,7 @@ import { motion } from "framer-motion"
 
 const ProfileWrapper = styled.header`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: url(${bg});
   background-position: center;
   background-repeat: no-repeat;

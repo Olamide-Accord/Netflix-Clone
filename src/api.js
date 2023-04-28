@@ -2,7 +2,6 @@ const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = 'bc6968961bf7133c0e99d9e9f501e512';
 
 
-
 const popularMoviesURL = `movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const trendingNowURL = `trending/movie/week?api_key=${API_KEY}`;
 const topRatedURL = `movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
