@@ -37,14 +37,12 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: hidden;
   .modal-container{
     position: absolute;
     top: 8%;
     width: 70%;
     height: max-content;
     background-color: ${(props) => props.theme.colors.modalBg};
-    overflow-y: auto;
   }
   @media only screen and (max-width: 991px) {
     .modal-container{
