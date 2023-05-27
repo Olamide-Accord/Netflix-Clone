@@ -20,6 +20,11 @@ const ratedTvShowsUrl = fetchTopRatedTVShowsUrl();
 
 const initialState = {
   movies: [],
+  hasMore: false,
+  totalResults: 0,
+  page: 0,
+  totalPages: 0,
+  isLoading: false,
   trending: [],
   ratedMovies: [],
   upcomingMovies: [],
@@ -74,6 +79,28 @@ export const fetchTopRatedTVShows = createAsyncThunk('movies/fetchTopRatedTvShow
 const movieSlice = createSlice({
   name: 'movie',
   initialState,
+  reducers: {
+    getPopularMovies : (state) => {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    },
+    fetchedPopularMovies: (state, {payload}) => {
+      return {
+        ...state,
+        movies: [...state.movies, payload.results],
+        hasMore: payload.page < payload.total_pages,
+        totalResults: payload.total_results,
+        page: payload.page,
+        totalPages: payload.total_pages,
+        isLoading: false
+      }
+    },
+    resetState: (state) => {
+      return initialState;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPopularMovies.fulfilled, (state, {payload}) =>{
@@ -100,5 +127,5 @@ const movieSlice = createSlice({
   }
 });
 
-
+// export const { getPopularMovies, fetchedPopularMovies, resetState } = movieSlice.actions;
 export default movieSlice.reducer;

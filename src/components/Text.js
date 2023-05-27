@@ -1,5 +1,5 @@
 import { colors } from "lib/styles/colors";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const TextWrapper = styled.p`
   font-size: ${(props) => props.size || "1.3rem"};
@@ -10,6 +10,13 @@ const TextWrapper = styled.p`
         ? props.theme.colors[props.color]
         : props.color
       : "#fff"};
+  ${(props) => props.uppercase && css`
+    text-transform: uppercase;
+  `
+  };
+  ${(props) => props.wrap && css`
+    word-wrap: break-word;
+  `}
   text-align: ${(props) => (props.alignment ? props.alignment : "center")};
   line-height: ${(props) => props.lineHeight || "130%"};
   padding: ${(props) => props.padding};
@@ -25,6 +32,7 @@ const TextWrapper = styled.p`
  * @param {string} as
  * @param {string} color -
  * @param {string} size -
+ * @param {string} wrap -
  * @param {string} weight -
  * @param {string} lineHeight -
  * @param {string} mobileLineHeight
@@ -32,6 +40,7 @@ const TextWrapper = styled.p`
  * @param {string} mobileSize -
  * @param {string} mobileWeight -
  * @param {string} tabAlign -
+ * @param {string} uppercase -
  * width
  */
 
@@ -44,6 +53,8 @@ const Text = ({
   lineHeight,
   tabAlign,
   children,
+  uppercase,
+  wrap,
   ...rest
 }) => {
   return (
@@ -51,10 +62,12 @@ const Text = ({
       as={as}
       size={size}
       weight={weight}
+      wrap={wrap}
       color={color}
       alignment={alignment}
       lineHeight={lineHeight}
       tabAlign={tabAlign}
+      uppercase={uppercase}
       {...rest}
     >
       {children}

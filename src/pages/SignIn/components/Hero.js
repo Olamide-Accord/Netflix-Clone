@@ -33,10 +33,11 @@ export const HeroWrapper = styled.div`
     border-radius: none;
     font-size: 1.5rem;
   }
-  a{
+  a, span{
     color: ${(props) => props.theme.colors.primary};
     text-decoration: underline;
     font-size: 1rem;
+    cursor: pointer;
   }
 `
 
@@ -143,18 +144,12 @@ const Hero = () => {
               isLoading ? "Loading..." : "Log In"
             }
           </Button>
-          <Container
-            alignment="center"
-            margin="0.5rem 0"
-            gap="0.5rem"
-          >
-            <input type="checkbox" name="remember" id="remember" />
-            <Text>Remember me</Text>
-          </Container>
+          
           <Container
             alignment="center"
             tabHorizontal
             gap="0.25rem"
+            margin="0.5rem 0 0"
           >
             <Text
               size="1.2rem"
@@ -162,7 +157,7 @@ const Hero = () => {
             >
               Forgot password?
             </Text>
-            <a href="#" onClick={resetPassword}>Click here</a>
+            <span onClick={resetPassword}>Click here</span>
           </Container>
           <Container
             alignment="center"

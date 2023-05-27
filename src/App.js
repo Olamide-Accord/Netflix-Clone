@@ -23,8 +23,8 @@ function App() {
             <Route path='login' element={<SignIn />} />
             <Route path='sign-up' element={<SignUp />} />
             <Route path="browse" element={<User />}>
+              <Route path=":id" element={<MovieDetails />} />
             </Route>
-              <Route path="browse/:id" element={<MovieDetails />} />
             
             <Route path="browse/my-list" element={<MyList />} />
           </Routes>

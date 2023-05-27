@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from "lib/styles/colors";
 
 const Style = styled.div`
   width: ${(props) => props.width};
@@ -8,6 +9,10 @@ const Style = styled.div`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
   button{
     width: 100%;
     outline: none;
@@ -15,20 +20,24 @@ const Style = styled.div`
     font-size: ${(props) => props.size || "1.2rem"};
     font-weight: ${(props) => props.weight || '400'};
     line-height: ${(props) => props.lineHeight || "120%"};
-    background-color: ${(props) => props.bg || props.theme.colors.primary};
+    background-color: ${(props) => props.bg 
+      ? colors[props.bg]
+        ? props.theme.colors[props.bg]
+        : props.bg
+      :props.theme.colors.primary};
     color: ${(props) => props.color || props.theme.colors.white};
     padding: ${(props) => props.padding || "0.65rem 1.5rem"};
     margin: ${(props) => props.margin};
     border-radius: ${(props) => props.radius || '0.35rem'};
     cursor: pointer;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: ${(props) => props.gap || "0.25rem"};
-    white-space: nowrap;
   }
   &:hover{
     opacity: 0.75;
+
   }
   a{
     color: #fff;

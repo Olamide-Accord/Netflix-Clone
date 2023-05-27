@@ -39,7 +39,9 @@ const globalStyles = createGlobalStyle`
       height: 100%;
     }
   }
-  
+  .no-scroll{
+    overflow-y: hidden;
+  }
   @media only screen and (max-width: 991px) {
     html{
       font-size: 70%;

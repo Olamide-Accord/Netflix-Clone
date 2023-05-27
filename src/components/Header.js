@@ -9,7 +9,7 @@ import Overlay from './Overlay';
 
 const HeaderWrapper = styled.header`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: url(${bg});
   background-position: center;
   background-repeat: no-repeat;
@@ -28,10 +28,13 @@ const HeaderWrapper = styled.header`
     img{
       width: 150px;
     }
-    a{
-      color: #fff;
-    }
   }
+`;
+
+export const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  color: #fff;
 `;
 
 const Header = ({children}) => {
@@ -41,10 +44,14 @@ const Header = ({children}) => {
         <Link to='/'>
           <img src={logo} alt="Netflix Logo" />
         </Link>
-        <Button>
-          <Link to="/login">
+        <Button
+          padding="0.85rem 1.45rem"
+          size="1.1rem"
+          weight="500"
+        >
+          <StyledLink to="/login">
             Sign in
-          </Link>
+          </StyledLink>
         </Button>
       </nav>
       <Overlay />

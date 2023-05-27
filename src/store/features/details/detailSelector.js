@@ -1,9 +1,16 @@
 import { useSelector } from "react-redux";
 
 const DetailSelector = () => {
-  const {movieDetails} = useSelector((state) => state.details);
+  const { 
+    movieDetails,
+    similarMovies,
+    movieCasts,
+  } = 
+  useSelector((state) => state.details);
   return {
-    movie: movieDetails,
+    details: movieDetails,
+    similarMovies,
+    movieCasts,
   }
 }
 

@@ -7,5 +7,6 @@ export const colors ={
   inputBg: "rgba(22, 22, 22, 0.7)",
   inputBorder: "rgba(128, 128, 128, 0.7)",
   faqBg: "rgba(45, 45, 45, 1)",
-  footerText: "rgba(255, 255, 255, 0.7)"
+  footerText: "rgba(255, 255, 255, 0.7)",
+  modalBg: 'hsl(0, 0%, 12%)'
 }

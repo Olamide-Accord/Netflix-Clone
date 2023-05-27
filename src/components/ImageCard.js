@@ -1,9 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux';
-import { fetchMovieDetails } from 'store/features/details/detailSlice';
+import { fetchMovieDetails, fetchSimilarMovies, fetchMovieCast } from "store/features/details/detailSlice";
+
+
+
+const Image_Url = 'https://image.tmdb.org/t/p/w500';
+
+const ImageCard = ({movie}) => {
+  const dispatch = useDispatch()
+  const {id, title, poster_path, backdrop_path} = movie;
+  const navigate = useNavigate();
+
+  const openModal = (id) => {
+    navigate(`/browse/${id}`);
+    document.body.classList.add('no-scroll')
+    dispatch(fetchMovieDetails(id))
+    dispatch(fetchSimilarMovies(id))
+    dispatch(fetchMovieCast(id))
+  }
+
+  useEffect(() => {
+    dispatch(fetchMovieDetails(id))
+  }, [id])
+  return (
+    <CardImage
+      whileHover={{scale: 1.05}}
+      layout
+    >
+      <motion.img
+        className='modal' 
+        layout
+        src={
+          poster_path !== null 
+            ? `${Image_Url}${poster_path}`
+            : `${Image_Url}${backdrop_path}`
+        }
+        alt={title}
+        onClick={() => openModal(id)}
+      />
+    </CardImage>
+  )
+};
 
 const CardImage = styled(motion.div)`
   overflow: hidden;
@@ -13,33 +53,11 @@ const CardImage = styled(motion.div)`
     height: 100%;
     object-fit: cover;
     border-radius: 0.75rem;
+    cursor: pointer;
   }
   a{
     color: ${(props) => props.theme.colors.white};
   }
 `;
-
-
-
-const ImageCard = ({movie}) => {
-  const dispatch = useDispatch()
-  const {id, title, poster_path} = movie;
-
-  return (
-    <CardImage
-      whileHover={{scale: 1.2}}
-      layout
-      
-    >
-      <Link to={`/browse/${id}`}>
-        <motion.img 
-          layout
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={title}
-        />
-      </Link>
-    </CardImage>
-  )
-}
 
 export default ImageCard

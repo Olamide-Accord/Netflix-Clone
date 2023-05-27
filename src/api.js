@@ -1,7 +1,6 @@
 const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = 'bc6968961bf7133c0e99d9e9f501e512';
 
-
 const popularMoviesURL = `movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const trendingNowURL = `trending/movie/week?api_key=${API_KEY}`;
 const topRatedURL = `movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
@@ -44,3 +43,8 @@ export const fetchMovieCastsUrl = (movieId) =>
 
 export const fetchTVCastsUrl = (tvId) =>
   `${BASE_URL}/tv/${tvId}/credits?api_key=${API_KEY}`;
+
+const movieData = async(e) => {
+  const response = await fetch(`${BASE_URL}${popularMoviesURL}`);
+  return response.json()
+}

@@ -4,31 +4,31 @@ import { Eye } from "@styled-icons/bootstrap/Eye";
 import { EyeSlash } from "@styled-icons/bootstrap/EyeSlash";
 
 const shrinkLabelStyle = css`
-  top: 1.25rem;
+  top: -0rem;
   font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 const InputLabel = styled.label`
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 30%;
   left: 2rem;
   transition: 300ms ease all;
   pointer-events: none;
   color: #8c8c8c;
-  font-size: 1.2rem;
-  ${({shrink}) => shrink && shrinkLabelStyle};
+  font-weight: 500;
+  ${({shrink}) => shrink && shrinkLabelStyle}
 `
 
 const InputWrapper = styled.input`
-  padding: 1.5rem 2rem;
+  padding: 1.6rem 2rem;
   font-family: inherit;
   border-radius: 0.4rem;
   width: 100%;
   border: none;
+  font-size: 1.2rem;
   background-color: #3b3b3b;
-  font-size: 1.1rem;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
   color: ${(props) => props.theme.colors.white};
   &:focus {
     outline: none;
@@ -36,7 +36,6 @@ const InputWrapper = styled.input`
   }
   &:focus ~ ${InputLabel} {
     ${shrinkLabelStyle}
-    font-size: 1rem;
   }
 `
 const FormControl = styled.div`

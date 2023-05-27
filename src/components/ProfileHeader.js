@@ -10,6 +10,7 @@ import { auth } from 'services/firebase';
 import { signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { motion } from "framer-motion"
+import { StyledLink } from './Header';
 
 const ProfileWrapper = styled.header`
   width: 100%;
@@ -83,11 +84,13 @@ const ProfileHeader = () => {
           <Link to="my-list">My List</Link>
         </Button>
         <Button onClick={() => logoutAuth()}>
-          Sign out
+          <StyledLink to="/">
+            Sign out
+          </StyledLink>
         </Button>
       </nav>
       <Overlay />
-      <motion.div
+      {/* <motion.div
         initial={{y: "100%"}}
         animate={{y: "1%"}}
         transition={{
@@ -108,7 +111,7 @@ const ProfileHeader = () => {
         >
           While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.
         </motion.p>
-      </motion.div>
+      </motion.div> */}
     </ProfileWrapper>
   )
 }

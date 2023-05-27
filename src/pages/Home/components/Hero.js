@@ -2,6 +2,7 @@ import Button from "components/Button";
 import Text from "components/Text";
 import styled from "styled-components";
 import {Link} from "react-router-dom"
+import { StyledLink } from "components/Header";
 
 
 const Wrapper = styled.div`
@@ -37,9 +38,9 @@ const Hero =  () => {
         padding="1rem 2rem"
         margin="1rem"
       >
-        <Link to="sign-up">
+        <StyledLink to="sign-up">
           Sign Up
-        </Link>
+        </StyledLink>
       </Button>
     </Wrapper>
   )
