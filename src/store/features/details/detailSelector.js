@@ -5,12 +5,16 @@ const DetailSelector = () => {
     movieDetails,
     similarMovies,
     movieCasts,
+    movieTrailers,
+    loading,
   } = 
   useSelector((state) => state.details);
   return {
     details: movieDetails,
     similarMovies,
     movieCasts,
+    movieTrailers,
+    loading
   }
 }
 

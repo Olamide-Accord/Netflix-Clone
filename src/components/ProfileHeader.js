@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import {Link, useNavigate} from "react-router-dom";
+import bg from "assets/ProfileBg.jpg"
+import {Link, useNavigate, useParams} from "react-router-dom";
 import logo from "assets/netflix.png";
 import Button from 'components/Button';
 import Text from './Text';
@@ -10,14 +11,8 @@ import { signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { motion } from "framer-motion"
 import { StyledLink } from './Header';
-import movieSelector from 'store/features/movies/movieSelector';
-
-const Image_Url = 'https://image.tmdb.org/t/p/original'
 
 const ProfileHeader = () => {
-  const { movies } = movieSelector();
-  const movie = movies[0];
-  const { backdrop_path, poster_path, title, original_title, overview} = movie;
   const navigate = useNavigate()
   const logoutAuth = () => {
     signOut(auth)
@@ -25,11 +20,13 @@ const ProfileHeader = () => {
         toast.success("User signed out")
         navigate("/")
       }).catch((error) => {
-        console.log(error.code)
+        toast.error(error.code)
       })
   }
+
+  
   return (
-    <ProfileWrapper img={backdrop_path} img2={poster_path}>
+    <ProfileWrapper>
       <nav>
         <div>
           <Link to='/'>
@@ -53,27 +50,29 @@ const ProfileHeader = () => {
         initial={{y: "100%", opacity: 0}}
         animate={{y: "-5%", opacity: 1}}
         transition={{
-          duration: 1.5,
-          delayChildren: '0.2'
+          duration: 1.2,
+          delayChildren: 0.2
         }}
         className="content"
       >
         <Text
-          size='7rem'
+          size='3.25rem'
           weight='800'
           uppercase
           alignment="left"
           tabAlign="left"
+          margin="0.5rem 0"
         >
-          {title || original_title}
+          The Little Mermaid
         </Text>
         <Text
           size='1.3rem'
           weight='300'
           alignment="left"
           tabAlign="left"
+          lineHeight="170%"
         >
-          {overview}
+          The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy
         </Text>
       </motion.div>
     </ProfileWrapper>
@@ -83,10 +82,7 @@ const ProfileHeader = () => {
 const ProfileWrapper = styled.header`
   width: 100%;
   height: 100vh;
-  background: ${({img, img2}) => 
-    img ? `url(${Image_Url}${img})`
-      : `url(${Image_Url}${img2})`
-  };
+  background: url(${bg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -95,7 +91,7 @@ const ProfileWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 9%;
+    padding: 1.5rem 5%;
     z-index: 100;
     position: absolute;
     top: 0;
@@ -103,7 +99,7 @@ const ProfileWrapper = styled.header`
     right: 0;
     
     img{
-      width: 150px;
+      width: 10rem;
     }
     a{
       color: #fff;
@@ -113,10 +109,9 @@ const ProfileWrapper = styled.header`
   }
   .content{
     position: absolute;
-    width: 65%;
-    /* top: 60%;
-    left: 10%;
-    transform: translateY(-50%); */
+    width: 68%;
+    top: 65%;
+    left: 5%;
     z-index: 5;
     text-align: left;
   }

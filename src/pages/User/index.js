@@ -1,54 +1,34 @@
-import {useEffect} from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import movieSelector from 'store/features/movies/movieSelector'
-import { 
-  fetchPopularMovies, 
-  fetchTrendingNow, 
-  fetchTopRatedMovies, 
-  fetchUpcomingMovies, 
-  fetchPopularTVShows, 
-  fetchTrendingTVShows, 
-  fetchTopRatedTVShows 
-} from 'store/features/movies/movieSlice'
-
 import ProfileHeader from 'components/ProfileHeader'
-import Card from 'components/Card'
-
+import PopularMovies from './components/PopularMovies'
+import TrendingMovies from './components/TrendingMovies'
+import TopRatedMovies from './components/TopRatedMovies'
+import UpcomingMovies from './components/UpcomingMovies'
+import Container from 'components/Container'
+import PopularTvShows from './components/PopularTvShows'
+import TrendingTvShows from './components/TrendingTvShows'
+import TopRatedTvShows from './components/TopRatedTvShows'
 
 
 const UserProfile = () => {
-  const { 
-    movies, 
-    trending,
-    ratedMovies, 
-    upcomingMovies, 
-    tvShows, 
-    trendingTvShows, 
-    ratedTvShows 
-  } = movieSelector();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPopularMovies());
-    // dispatch(fetchTrendingNow());
-    // dispatch(fetchTopRatedMovies());
-    // dispatch(fetchUpcomingMovies());
-    // dispatch(fetchPopularTVShows());
-    // dispatch(fetchTrendingTVShows());
-    // dispatch(fetchTopRatedTVShows());
-  })
-
   return (
     <>
       <ProfileHeader />
-      <Card cardTitle="Popular on Netflix" cardData={movies}/>
-      {/* <Card cardTitle="Trending Movies" cardData={trending} />  */}
-      {/* <Card cardTitle="Top Rated Movies" cardData={ratedMovies} />
-      <Card cardTitle="Movies Coming Soon" cardData={upcomingMovies} />
-      <Card cardTitle="Popular Tv Shows" cardData={tvShows} />
-      <Card cardTitle="Trending Tv Shows" cardData={trendingTvShows} />
-      <Card cardTitle="Top Rated Tv Shows" cardData={ratedTvShows} /> */}
+      <Container
+        vertical
+        width="100%"
+        gap='10rem'
+        margin='2rem 0'
+      >
+        <PopularMovies />
+        <TrendingMovies />
+        <TopRatedMovies />
+        <UpcomingMovies />
+        <PopularTvShows />
+        <TrendingTvShows />
+        <TopRatedTvShows />
+      </Container>
       <Outlet />
     </>
   )

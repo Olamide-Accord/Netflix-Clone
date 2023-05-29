@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  background-color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.65);
   width: 100%;
   height: 100%;
   position: absolute;

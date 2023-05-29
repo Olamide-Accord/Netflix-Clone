@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
-import ModalImage from './ModalImage';
-import ModalOverview from './ModalOverview';
-import DetailSelector from 'store/features/details/detailSelector';
-import SimilarMovies from 'pages/Details.js/components/SimilarMovies';
-import Cast from 'pages/Details.js/components/Cast';
 
-const Modal = ({movie}) => {
-  const { details, similarMovies, movieCasts } = DetailSelector();
+const Modal = ({children}) => {
   return (
     <ModalWrapper>
       <div className="modal-container">
-        <ModalImage 
-          movie={movie}
-        />
-        <ModalOverview movie={movie} />
-        {
-          similarMovies && <SimilarMovies movies={similarMovies} />
-        }
-        {
-          movieCasts && <Cast cast={movieCasts} />
-        }
+        {children}
       </div>
     </ModalWrapper>
   )
@@ -33,16 +18,19 @@ const ModalWrapper = styled.div`
   background: rgba(0,0,0,0.75);
   z-index: 150;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  transition: all 0.3s linear;
   .modal-container{
     position: absolute;
-    top: 8%;
+    top: 10%;
     width: 70%;
-    height: max-content;
+    margin-bottom: 3%;
     background-color: ${(props) => props.theme.colors.modalBg};
+    overflow-y: hidden;
   }
   @media only screen and (max-width: 991px) {
     .modal-container{
@@ -50,7 +38,5 @@ const ModalWrapper = styled.div`
     }
   }
 `;
-
-
 
 export default Modal;

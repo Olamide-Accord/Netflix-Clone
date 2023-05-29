@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import Container from './Container';
 import Text from './Text';
@@ -7,7 +7,7 @@ import { Play } from '@styled-icons/fa-solid/Play';
 import { Plus } from '@styled-icons/boxicons-regular/Plus';
 import { Close } from "@styled-icons/ionicons-solid/Close"
 import { useNavigate } from 'react-router-dom';
-
+import DetailSelector from 'store/features/details/detailSelector';
 
 const Image_Url = 'https://image.tmdb.org/t/p/original'
 
@@ -22,7 +22,7 @@ const RoundButton = styled(Button)`
 `;
 
 const ModalImage = ({movie}) => {
-  const { backdrop_path, poster_path, title } = movie;
+  const { backdrop_path, poster_path, title, name, original_name, original_title } = movie;
   return (
     <ModalWrapper>
       <img 
@@ -31,8 +31,8 @@ const ModalImage = ({movie}) => {
             ? `${Image_Url}${backdrop_path}`
             : `${Image_Url}${poster_path}`
         }
-        alt={title} />
-      <ImageProperties title={title} />
+        alt={title || original_title || name || original_name} />
+      <ImageProperties movie={movie} />
     </ModalWrapper>
   )
 }
@@ -79,7 +79,16 @@ const CloseButton = styled.button`
   cursor: pointer;
 `
 
-const ImageProperties = ({title}) => {
+const PlayButton = styled(Button)`
+  button{
+    gap: 0.35rem;
+  }
+`
+
+const ImageProperties = ({movie}) => {
+  const { title, name, original_name, original_title } = movie;
+
+  const { movieTrailers } = DetailSelector()
   const navigate = useNavigate()
   const closeModal = () => {
     navigate('/browse')
@@ -103,22 +112,23 @@ const ImageProperties = ({title}) => {
           uppercase
           wrap="true"
         >
-          {title}
+          {title || original_title || name || original_name}
         </Text>
         <Container
           margin="2rem 0 0"
           gap="1rem"
         >
-          <Button
+          <PlayButton
             bg="white"
             color="black"
             padding="1rem 1.5rem"
-            size="1.5rem"
+            size="1.65rem"
             weight="600"
+            onClick={() => console.log(movieTrailers)}
           >
             <Play size={25} />
-            Play
-          </Button>
+            <span>Play</span>
+          </PlayButton>
 
           <RoundButton
             bg="modalBg"

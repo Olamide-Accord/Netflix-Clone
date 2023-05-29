@@ -5,11 +5,11 @@ import Text from 'components/Text'
 
 const Image_Url = "https://image.tmdb.org/t/p/w154"
 
-const Costume = styled.div`
+export const Costume = styled.div`
   padding: 2rem;
 `;
 
-const CastStack = styled.div`
+export const CastStack = styled.div`
   width: 85%;
   margin: 2% auto;
   display: flex;

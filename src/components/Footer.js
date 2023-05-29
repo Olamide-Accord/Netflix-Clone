@@ -5,7 +5,7 @@ import Text from './Text';
 import { footer } from 'db';
 
 const FooterWrepper = styled.footer`
-  padding: 5% 10%;
+  padding: 5%;
   color: ${(props) => props.theme.colors.footerText};
   text-decoration: underline;
   position: relative;
@@ -15,7 +15,7 @@ const FooterWrepper = styled.footer`
     column-gap: 3rem;
     row-gap: 1rem;
     li{
-      flex-basis: 17rem;
+      flex-basis: 20rem;
       font-size: 1.2rem;
     }
   }

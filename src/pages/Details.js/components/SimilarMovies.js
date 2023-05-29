@@ -6,8 +6,16 @@ import { ArrowSortDown, ArrowSortUp } from "@styled-icons/fluentui-system-filled
 
 const Image_Url = "https://image.tmdb.org/t/p/w500"
 
-
-const SimilarMovies = ({movies}) => {
+const SimilarMovies = ({similarMovies}) => {
+  const [loadMore, setLoadMore] = useState(6);
+  const handleLoadMore = () => {
+    if (loadMore === 6) {
+      setLoadMore(similarMovies.length)
+    }
+    else{
+      setLoadMore(6);
+    }
+  }
   return (
     <Wrapper>
       <Text
@@ -18,101 +26,86 @@ const SimilarMovies = ({movies}) => {
       >
         More like this
       </Text>
-      <Stack movies={movies} />
+      <StackWrapper>
+        {
+          similarMovies.slice(0, loadMore).map((movie) => {
+            return <Data key={movie.id} movie={movie} />
+          })
+        }
+        <div className="line">
+          <button 
+            onClick={handleLoadMore}
+          >
+            {
+              loadMore > 6 ? <ArrowSortUp size={30} />
+              : <ArrowSortDown size={30} />
+            }
+          </button>
+        </div>
+      </StackWrapper>
     </Wrapper>
   )
 }
 
-const Stack = ({movies}) => {
+const Data = ({movie}) => {
   const [readMore, setReadMore] = useState(false);
-  const [loadMore, setLoadMore] = useState(6);
-
-  const handleLoadMore = () => {
-    if (loadMore === 6) {
-      setLoadMore(movies.length)
-    }
-    else{
-      setLoadMore(6);
-    }
-  }
-
-  const openReadMore = () => {
-    setReadMore(!readMore)
-  }
+  const { id, backdrop_path, poster_path, title, original_title, overview } = movie;
   
-  return (
-    <StackWrapper>
-      {
-        movies?.slice(0, loadMore).map((item) => {
-          const { id, backdrop_path, poster_path, title, original_title, overview } = item;
-          return (
-            <motion.div 
-              key={id}
-              className="stack-cards"
-              whileHover={{scale: 0.97}}
-            >
-              <div className="stack-img">
-                <img 
-                  src={
-                    backdrop_path !== null
-                      ? `${Image_Url}${backdrop_path}`
-                      : `${Image_Url}${poster_path}`
-                  } 
-                  alt={title || original_title} 
-                />
-              </div>
-              <div className="stack-desc">
-                <Text
-                  size="1.35rem"
-                  weight="600"
-                  alignment="left"
-                  tabAlign="left"
-                >
-                  {title || original_title}
-                </Text>
-                {
-                  overview ? <Text
-                    size="1.05rem"
-                    weight="400"
-                    alignment="left"
-                    tabAlign="left"
-                    lineHeight="180%"
-                    margin="0.75rem 0"
-                  >
-                    {readMore ? overview : `${overview.substring(0,170)}...`}
-                    <span onClick={() => setReadMore(!readMore)}>
-                      {readMore ? ' show less' : 'read more'}
-                    </span>
-                  </Text>
-                  : <Text
-                    size="1.05rem"
-                    weight="400"
-                    alignment="left"
-                    tabAlign="left"
-                    lineHeight="170%"
-                    margin="0.75rem 0"
-                  >
-                    No movie overview available
-                  </Text>
-                }
-              </div>
-            </motion.div>
-          )
-        })
-      }
-      <div className="line">
-      <button 
-        onClick={handleLoadMore}
-      >
-        {
-          loadMore > 6 ? <ArrowSortUp size={30} />
-          : <ArrowSortDown size={30} />
-        }
-        </button>
+  return ( 
+    <motion.div 
+      key={id}
+      className="stack-cards"
+      whileHover={{scale: 0.97}}
+    >
+      <div className="stack-img">
+        <img 
+          src={
+            backdrop_path !== null
+              ? `${Image_Url}${backdrop_path}`
+              : `${Image_Url}${poster_path}`
+          } 
+          alt={title || original_title} 
+        />
       </div>
-    </StackWrapper>
+      <div className="stack-desc">
+        <Text
+          size="1.35rem"
+          weight="600"
+          alignment="left"
+          tabAlign="left"
+        >
+          {title || original_title}
+        </Text>
+        {
+          overview ? <Text
+            size="1.05rem"
+            weight="400"
+            alignment="left"
+            tabAlign="left"
+            lineHeight="180%"
+            margin="0.75rem 0"
+          >
+            {readMore ? overview : `${overview.substring(0,170)}...`}
+            <span onClick={() => setReadMore(!readMore)}>
+              {readMore ? ' show less' : 'read more'}
+            </span>
+          </Text>
+          : <Text
+            size="1.05rem"
+            weight="400"
+            alignment="left"
+            tabAlign="left"
+            lineHeight="170%"
+            margin="0.75rem 0"
+          >
+            No movie overview available
+          </Text>
+        }
+      </div>
+    </motion.div>
   )
 }
+
 export default SimilarMovies
 
 

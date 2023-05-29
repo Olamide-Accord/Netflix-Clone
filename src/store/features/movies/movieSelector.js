@@ -6,9 +6,7 @@ const useMovieSelector = () => {
     trending, 
     ratedMovies, 
     upcomingMovies, 
-    tvShows, 
-    trendingTvShows, 
-    ratedTvShows 
+    loading
   } = useSelector((state) => state.movies);
   
   return {
@@ -16,9 +14,6 @@ const useMovieSelector = () => {
     trending,
     ratedMovies,
     upcomingMovies,
-    tvShows,
-    trendingTvShows,
-    ratedTvShows
   }
 }
 

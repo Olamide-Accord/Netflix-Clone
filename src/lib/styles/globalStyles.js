@@ -24,7 +24,7 @@ const globalStyles = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.black};
   }
   section{
-    padding: 5% 10%;
+    padding: 5%;
   }
   .title{
     font-size: 3.5rem;
@@ -38,9 +38,6 @@ const globalStyles = createGlobalStyle`
       width: 100%;
       height: 100%;
     }
-  }
-  .no-scroll{
-    overflow-y: hidden;
   }
   @media only screen and (max-width: 991px) {
     html{

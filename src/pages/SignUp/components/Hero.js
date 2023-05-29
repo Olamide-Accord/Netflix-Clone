@@ -57,7 +57,6 @@ const Hero = () => {
       } 
       else{
         toast.error("Error: check console")
-        console.log(error.message);
         setLoading(false);
       }
     }

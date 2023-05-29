@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import { auth, loginAuth } from 'services/firebase';
 import styled from "styled-components"
 import Button from 'components/Button'

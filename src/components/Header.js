@@ -19,7 +19,7 @@ const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 9%;
+    padding: 1.5rem 5%;
     z-index: 1000;
     position: absolute;
     top: 0;

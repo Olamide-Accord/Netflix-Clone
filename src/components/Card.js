@@ -18,14 +18,15 @@ const Card = ({ cardTitle, cardData }) => {
       slideRef.current.style.transform = `translateX(${-315 + distance }px)`;
     }
   }
-
+  
   return (
     <Wrapper>
       <Text
-        size="2rem"
+        size="1.65rem"
         weight="600"
-        margin="1.5rem 2rem"
+        margin="1rem 3.5rem 2.5rem"
         alignment='left'
+        tabAlign='left'
       >
         {cardTitle}
       </Text>
@@ -36,15 +37,18 @@ const Card = ({ cardTitle, cardData }) => {
         >
           <ArrowLeft size={70} />
         </span>
-        <div className="slides" ref={slideRef}>
-        {
-            cardData.map((movie) => {
+        <div 
+          className="slides" 
+          ref={slideRef}
+        >
+          { 
+            cardData.map((item) => {
               return (
                 <div
                   className='slide-box'
-                  key={movie.id}
+                  key={item.id}
                 >
-                  <ImageCard movie={movie} />
+                  <ImageCard movie={item} />
                 </div>
               )
             })
@@ -61,7 +65,7 @@ const Card = ({ cardTitle, cardData }) => {
 export default Card
 
 const Wrapper = styled.div`
-  padding: 3rem 0 1rem;
+  padding: 3rem 0;
 `
 
 const ImageWrapper = styled(motion.div)`
