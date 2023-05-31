@@ -5,9 +5,12 @@ import tv from "assets/tv.png"
 const EnjoyTv = () => {
   return (
     <Container
-      as="section"
-      slignment="center"
-      distribution="space-between"
+      as='section'
+      alignment="center"
+      gap="1rem"
+      tabGap="2rem"
+      tabVertical
+      tabAlignment="center"
     >
       <Container
         vertical

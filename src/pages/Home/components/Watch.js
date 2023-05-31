@@ -7,8 +7,11 @@ const Watch = () => {
   return (
     <Container
       as="section"
-      slignment="center"
-      distribution="space-between"
+      alignment="center"
+      gap="1rem"
+      tabGap="2rem"
+      tabVertical
+      tabAlignment="center"
     >
       <Container
         className="img-wrapper"

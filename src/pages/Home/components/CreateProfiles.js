@@ -7,8 +7,11 @@ const CreateProfiles = () => {
   return (
     <Container
       as="section"
-      distribution="space-between"
       alignment="center"
+      gap="1rem"
+      tabGap="2rem"
+      tabVertical
+      tabAlignment="center"
     >
       <Container
         vertical
