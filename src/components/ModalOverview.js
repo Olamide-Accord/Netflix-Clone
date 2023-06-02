@@ -18,8 +18,9 @@ const OverviewButton = styled.button`
 `;
 
 const ModalOverview = ({movie}) => {
-  const { genres, overview, release_date, first_air_date, spoken_languages, video, vote_average } = movie;
-  const vote = Math.floor(vote_average)
+  const { genres, overview, release_date, first_air_date, spoken_languages, vote_average } = movie;
+  const vote = Math.floor(vote_average);
+  
   return (
     <OverviewWrapper>
       <Container
@@ -48,7 +49,9 @@ const ModalOverview = ({movie}) => {
             size="1.1rem"
             margin="0.2rem 0"
           >
-            Release Date: {release_date || first_air_date}
+            {
+              release_date ? `Release Date: ${release_date}` : `First air date: ${first_air_date}`
+            }
           </Text>
         </Container>
         <Container

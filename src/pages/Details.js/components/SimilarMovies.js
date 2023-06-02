@@ -49,7 +49,7 @@ const SimilarMovies = ({similarMovies}) => {
 
 const Data = ({movie}) => {
   const [readMore, setReadMore] = useState(false);
-  const { id, backdrop_path, poster_path, title, original_title, overview } = movie;
+  const { id, backdrop_path, poster_path, title, original_title, name, original_name, overview } = movie;
   
   return ( 
     <motion.div 
@@ -64,17 +64,18 @@ const Data = ({movie}) => {
               ? `${Image_Url}${backdrop_path}`
               : `${Image_Url}${poster_path}`
           } 
-          alt={title || original_title} 
+          alt={ title || original_title || name || original_name } 
         />
       </div>
       <div className="stack-desc">
         <Text
-          size="1.35rem"
-          weight="600"
+          size="1.45rem"
+          weight="700"
           alignment="left"
           tabAlign="left"
+          color='primary'
         >
-          {title || original_title}
+          { title || original_title || name || original_name }
         </Text>
         {
           overview ? <Text
@@ -128,7 +129,6 @@ const StackWrapper = styled.div`
     .stack-img{
       width: 100%;
       height: 20rem;
-      
       img{
         width: 100%;
         height: 100%;

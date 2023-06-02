@@ -27,7 +27,7 @@ const ModalWrapper = styled.div`
   .modal-container{
     position: absolute;
     top: 10%;
-    width: 70%;
+    width: 75%;
     margin-bottom: 3%;
     background-color: ${(props) => props.theme.colors.modalBg};
     overflow-y: hidden;

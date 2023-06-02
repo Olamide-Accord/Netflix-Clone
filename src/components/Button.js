@@ -9,6 +9,9 @@ const Style = styled.div`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   button{
     width: 100%;
     outline: none;
@@ -29,7 +32,7 @@ const Style = styled.div`
     white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
   }
   &:hover{
     opacity: 0.75;

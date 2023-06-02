@@ -25,6 +25,7 @@ const ImageCard = ({movie}) => {
       <motion.img
         className='modal' 
         layout
+        loading='lazy'
         src={
           poster_path !== null 
             ? `${Image_Url}${poster_path}`

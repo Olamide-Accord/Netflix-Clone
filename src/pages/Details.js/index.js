@@ -10,8 +10,7 @@ import {
   fetchMovieDetails, 
   fetchSimilarMovies, 
   fetchMovieCast, 
-  fetchMovieTrailers, 
-  
+  fetchMovieTrailers 
 } from 'store/features/details/detailSlice';
 import DetailSelector from 'store/features/details/detailSelector';
 
@@ -27,7 +26,6 @@ const Details = () => {
     dispatch(fetchSimilarMovies(ID))
     dispatch(fetchMovieCast(ID))
     dispatch(fetchMovieTrailers(ID))
-
   }, [dispatch, ID, details])
 
   return (
